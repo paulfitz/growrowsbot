@@ -1,0 +1,11 @@
+{
+  "name": "growrowsbot",
+  "version": "0.1.1",
+  "description": "Grow Rows Bot",
+  "url": "https://github.com/paulfitz/growrowsbot",
+  "dependencies": {
+      "sql.js": "^0.2.21",
+      "write-file-atomic": "^1.1.4",
+      "lockfile": "^1.0.1"
+  }
+}
