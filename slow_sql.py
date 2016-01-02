@@ -1,9 +1,12 @@
+import os
 import subprocess
+
+SQL_DIR = os.environ['SQL_DIR']
 
 def run_regular_sql(user_id, txt):
     import json
     import sqlite3
-    db = sqlite3.connect('/tmp/{}.sqlite3'.format(user_id))
+    db = sqlite3.connect('{}/{}.sqlite3'.format(SQL_DIR, user_id))
     try:
         result = db.cursor().execute(txt).fetchall()
         db.commit()
@@ -13,7 +16,7 @@ def run_regular_sql(user_id, txt):
     db.close()
 
 def run_slow_sql(user_id, txt):
-    fname = '/tmp/{}.sqlite3'.format(user_id)
+    fname = '{}/{}.sqlite3'.format(SQL_DIR, user_id)
 
     proc = subprocess.Popen(['bash', './weakly_limited_sql.sh', fname],
                             stdout=subprocess.PIPE,
